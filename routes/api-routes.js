@@ -2,7 +2,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -49,5 +49,58 @@ module.exports = function(app) {
         id: req.user.id
       });
     }
+  });
+
+
+
+  // Routes for Trip Table
+
+  // Create a new trip
+  app.post("/api/trip", (req, res) => {
+    db.Trip.create({
+      user: req.body.user,
+      location: req.body.location,
+      hotel: req.body.hotel,
+      event: req.body.event,
+      food: req.body.food,
+    }).then(function(dbTrip) {
+      res.json(dbTrip);
+    });
+  });
+
+  // Read ALL info about ALL trips of ONE user
+  app.get("/api/trip/:id", function (req, res) {
+    db.Trip.findAll({
+      where: {
+        user: req.params.user
+      },
+    }).then(function (dbTrip) {
+      res.json(dbTrip);
+    });
+  });
+
+  // PUT route for updating trips
+  app.put("/api/trip", function (req, res) {
+    db.Trip.update(req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function (dbTrip) {
+        res.json(dbTrip);
+      });
+  });
+
+  // DELETE route for deleting trips
+  app.delete("/api/trip/:id", function (req, res) {
+    db.Trip.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function (dbTrip) {
+        res.json(dbTrip);
+      });
   });
 };
