@@ -1,4 +1,125 @@
-form.signup,
-form.login {
+/* signup and login margin adjustment */
+
+form.signup, form.login {
   margin-top: 50px;
+}
+
+/* google fonts: work sans */
+
+body {
+
+  font-family: 'Work Sans', sans-serif !important;
+
+}
+
+/* nav-bar customization  */
+
+.navbar {
+  padding-top: 10px !important; 
+  padding-bottom: 10px !important; 
+  background-color: black !important;
+}
+
+.navbar-brand {
+  background-color: black !important;
+}
+
+
+/* jumbotron customization with box shadow addition for all browsers */
+
+.jumbotron {
+
+  justify-content: center !important;
+  margin: 10px 10px 10px 10px auto !important;
+  -webkit-box-shadow: 8px 10px 10px rgb(65, 65, 65);
+  -moz-box-shadow: 8px 10px 10px rgb(65, 65, 65);
+  box-shadow: 8px 10px 10px rgb(65, 65, 65);
+
+}
+
+
+/* added class for centering within a container (currently for login/signup) */
+
+.vertical-center {
+
+  max-width: 650px !important;
+  justify-content: center !important;
+
+}
+
+
+/* remove cheap looking link underline and add a shine/hover */
+
+a {
+  text-decoration: none !important;
+}
+
+a.effect-shine:hover {
+  -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 30%, #000 50%, rgba(0,0,0,.6) 70%);
+  -webkit-mask-size: 200%;
+  animation: shine 1.5s infinite;
+}
+
+@-webkit-keyframes shine {
+  from {
+    -webkit-mask-position: 150%;
+  }
+  
+  to {
+    -webkit-mask-position: -50%;
+  }
+}
+
+a:hover {
+  color: #2778ce;
+  transition: all 0.45s ease-in-out !important;
+} 
+
+
+/* button adjustments + hover effect */
+
+button {
+
+  /* font-family: 'Work Sans', sans-serif !important; */
+  color: white !important;
+  border-radius: 5px !important;
+  border: none !important;
+  padding: 5px 8px !important;
+  background: black !important;
+  font-family: 'Work Sans', sans-serif !important;
+
+}
+
+button:hover {
+
+  background: #7a7a7a !important;
+  transition: all 0.45s ease-in-out !important;
+
+}
+
+
+/* this centers the city search form and search button on home.html */
+
+.vertical-search-and-button-home {
+
+  justify-content: center !important;
+
+}
+
+
+
+/* adjustments for cards */
+
+.card {
+
+  background: #EAECEF !important;
+  margin-right: 10px !important;
+  margin-left: 10px !important;
+  min-height: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+  -webkit-box-shadow: 8px 10px 10px rgb(65, 65, 65);
+  -moz-box-shadow: 8px 10px 10px rgb(65, 65, 65);
+  box-shadow: 8px 10px 10px rgb(65, 65, 65);
+
 }
