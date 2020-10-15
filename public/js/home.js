@@ -13,11 +13,12 @@ $(document).ready(() => {
     var searchTermOriginal = $("#citySearchInput").val().trim();
     searchTerm = searchTermOriginal.replaceAll(" ", "%20");
 
-    getCityData();
+    getCityDataThenHotels();
   });
 
-  function getCityData() {
+  function getCityDataThenHotels() {
 
+    // Searching for City
     var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + searchTerm + "&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyANZUDCKbS7yUeabpf9yIcjCpISRowjMu0"
 
     $.ajax({
@@ -25,8 +26,10 @@ $(document).ready(() => {
       method: "GET"
     }).then(function (response) {
 
+      // Console.log result of city
       console.log(response);
 
+      // Searching for Hotels in the city
       var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+in+" + searchTerm + "&key=AIzaSyANZUDCKbS7yUeabpf9yIcjCpISRowjMu0"
 
       $.ajax({
@@ -34,6 +37,7 @@ $(document).ready(() => {
         method: "GET"
       }).then(function (response) {
 
+        // Console.log hotel results
         console.log(response);
       });
     });
