@@ -4,31 +4,49 @@ $(document).ready(() => {
   // $.get("/api/user_data").then(data => {
   //   $(".member-name").text(data.email);
   // });
-
-  const cityInput = $("#citySearchInput").val();
-
+  var searchTerm;
+  // Variables for City
+  var cityName;
+  var cityImage;
+  // Variables for Hotels
+  // var hotelNames = [];
+  // var hotelImages = [];
+  // var hotelLocations = [];
   $("#citySearchButton").on("click", function (event) {
     event.preventDefault();
-    console.log("test")
-    // $("ENTER JUMBOTRON RESULTS ID").removeClass("hide");
-    // $("ENTER RESULTS CARD CLASS/ID").removeClass("hide");
+    $("#resultsJumbotron").removeClass("d-none");
+    $("#resultsCards").removeClass("d-none");
     $("#homeSearch").addClass("d-none");
-    console.log("should have hidden")
-    console.log(cityInput)
-    // getCityData();
+    var searchTermOriginal = $("#citySearchInput").val().trim();
+    searchTerm = searchTermOriginal.replaceAll(" ", "%20");
+    getCityDataThenHotels();
   });
-
-  function getCityData() {
-
-    // var queryURL = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + cityInput + "&inputype=textquery&fields=photos,formatted_address,name,rating,opening_hours&key=AIzaSyB5T-Nu0v6U-8hSe_X9GqG3yjDdur5Ppyk"
-
-    var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyANZUDCKbS7yUeabpf9yIcjCpISRowjMu0"
-
+  function getCityDataThenHotels() {
+    // Searching for City
+    var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + searchTerm + "&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyANZUDCKbS7yUeabpf9yIcjCpISRowjMu0"
     $.ajax({
       url: queryURL,
       method: "GET"
-    }).then(function (response) {
-      console.log(response);
+    }).then(function (cityResponse) {
+      // Console.log result of city
+      console.log(cityResponse);
+      cityName = cityResponse.candidates[0].name;
+      cityImage = cityResponse.candidates[0].photos[0].html_attributions[0];
+      console.log("cityName");
+      console.log(cityName);
+      console.log("cityImage");
+      console.log(cityImage);
+      // Searching for Hotels in the city
+      var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+in+" + searchTerm + "&key=AIzaSyANZUDCKbS7yUeabpf9yIcjCpISRowjMu0"
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function (hotelsResponse) {
+        // Console.log hotel results
+        console.log(hotelsResponse);
+        // hotelNames.push(hotelsResponse.results[i].name);
+        // hotelImages.push(hotelsResponse.results[i].name);
+      });
     });
   };
 });
