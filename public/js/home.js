@@ -13,6 +13,7 @@ $(document).ready(() => {
   var hotelNames = [];
   var hotelImages = [];
   var hotelUrls = [];
+  var hotelAddresses = [];
   var hotelLatitude = [];
   var hotelLongitude = [];
 
@@ -65,6 +66,7 @@ $(document).ready(() => {
         hotelNames.push(hotelsResponse.businesses[i].name);
         hotelImages.push(hotelsResponse.businesses[i].image_url);
         hotelUrls.push(hotelsResponse.businesses[i].url);
+        hotelAddresses.push(hotelsResponse.businesses[i].location.address1);
         hotelLatitude.push(hotelsResponse.businesses[i].coordinates.latitude);
         hotelLongitude.push(hotelsResponse.businesses[i].coordinates.longitude);
       }
