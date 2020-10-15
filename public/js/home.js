@@ -18,9 +18,10 @@ $(document).ready(() => {
 
   $("#citySearchButton").on("click", function (event) {
     event.preventDefault();
+    $("#homeSearch").addClass("d-none");
     $("#resultsJumbotron").removeClass("d-none");
     $("#resultsCards").removeClass("d-none");
-    $("#homeSearch").addClass("d-none");
+    
     var searchTermOriginal = $("#citySearchInput").val().trim();
     searchTerm = searchTermOriginal.replaceAll(" ", "%20");
     getCityDataThenHotels();
