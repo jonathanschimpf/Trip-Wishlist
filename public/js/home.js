@@ -4,7 +4,6 @@ $(document).ready(() => {
   // $.get("/api/user_data").then(data => {
   //   $(".member-name").text(data.email);
   // });
-
   var searchTerm;
 
   // Variables for City
@@ -19,18 +18,16 @@ $(document).ready(() => {
 
   $("#citySearchButton").on("click", function (event) {
     event.preventDefault();
-
+    $("#resultsJumbotron").removeClass("d-none");
+    $("#resultsCards").removeClass("d-none");
+    $("#homeSearch").addClass("d-none");
     var searchTermOriginal = $("#citySearchInput").val().trim();
     searchTerm = searchTermOriginal.replaceAll(" ", "%20");
-
     getCityDataThenHotels();
   });
-
   function getCityDataThenHotels() {
-
     // Searching for City
     var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + searchTerm + "&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyANZUDCKbS7yUeabpf9yIcjCpISRowjMu0"
-
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -46,10 +43,9 @@ $(document).ready(() => {
       console.log(cityName);
       console.log("cityImage");
       console.log(cityImage);
-
+      
       // Searching for Hotels in the city
       var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+in+" + searchTerm + "&key=AIzaSyANZUDCKbS7yUeabpf9yIcjCpISRowjMu0"
-
       $.ajax({
         url: queryURL,
         method: "GET"
