@@ -80,6 +80,10 @@ $(document).ready(() => {
           hotelLocationsLat.push(hotelsResponse.results[i].geometry.location.lat);
           hotelLocationsLng.push(hotelsResponse.results[i].geometry.location.lng);
         }
+
+        $("#cityName").text(cityName)
+        $("#cityImage").html(cityImage)
+
       });
     });
   };
