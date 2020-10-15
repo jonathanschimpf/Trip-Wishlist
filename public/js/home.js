@@ -9,6 +9,14 @@ $(document).ready(() => {
   
   $("#citySearchButton").on("click", function (event) {
     event.preventDefault();
+<<<<<<< HEAD
+=======
+    // $("ENTER JUMBOTRON RESULTS ID").removeClass("hide");
+    // $("ENTER RESULTS CARD CLASS/ID").removeClass("hide");
+    $("#homeSearch").addClass("hide");
+    getCityData();
+  });
+>>>>>>> 7b210ad6781cf08cb4cbde5e7165ab8c82ddef51
 
     var searchTermOriginal = $("#citySearchInput").val().trim();
     searchTerm = searchTermOriginal.replaceAll(" ", "%20");
