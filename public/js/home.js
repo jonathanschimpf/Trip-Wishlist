@@ -5,13 +5,17 @@ $(document).ready(() => {
   //   $(".member-name").text(data.email);
   // });
   var searchTerm;
+
   // Variables for City
   var cityName;
   var cityImage;
+
   // Variables for Hotels
-  // var hotelNames = [];
-  // var hotelImages = [];
-  // var hotelLocations = [];
+  var hotelNames = [];
+  var hotelImages = [];
+  var hotelLocationsLat = [];
+  var hotelLocationsLng = [];
+
   $("#citySearchButton").on("click", function (event) {
     event.preventDefault();
     $("#resultsJumbotron").removeClass("d-none");
@@ -28,24 +32,34 @@ $(document).ready(() => {
       url: queryURL,
       method: "GET"
     }).then(function (cityResponse) {
+
       // Console.log result of city
       console.log(cityResponse);
+
       cityName = cityResponse.candidates[0].name;
       cityImage = cityResponse.candidates[0].photos[0].html_attributions[0];
+
       console.log("cityName");
       console.log(cityName);
       console.log("cityImage");
       console.log(cityImage);
+      
       // Searching for Hotels in the city
       var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+in+" + searchTerm + "&key=AIzaSyANZUDCKbS7yUeabpf9yIcjCpISRowjMu0"
       $.ajax({
         url: queryURL,
         method: "GET"
       }).then(function (hotelsResponse) {
+
         // Console.log hotel results
         console.log(hotelsResponse);
-        // hotelNames.push(hotelsResponse.results[i].name);
-        // hotelImages.push(hotelsResponse.results[i].name);
+
+        for (let i = 0; i < hotelsResponse.results.length; i++) {
+          hotelNames.push(hotelsResponse.results[i].name);
+          hotelImages.push(hotelsResponse.results[i].photos[0].html_attributions[0]);
+          hotelLocationsLat.push(hotelsResponse.results[i].geometry.location.lat);
+          hotelLocationsLng.push(hotelsResponse.results[i].geometry.location.lng);
+        }
       });
     });
   };
