@@ -6,17 +6,19 @@ $(document).ready(() => {
   // });
 
   var searchTerm;
-  
+
+  // Variables for City
+  var cityName;
+  var cityImage;
+
+  // Variables for Hotels
+  var hotelNames = [];
+  var hotelImages = [];
+  var hotelLocationsLat = [];
+  var hotelLocationsLng = [];
+
   $("#citySearchButton").on("click", function (event) {
     event.preventDefault();
-<<<<<<< HEAD
-=======
-    // $("ENTER JUMBOTRON RESULTS ID").removeClass("hide");
-    // $("ENTER RESULTS CARD CLASS/ID").removeClass("hide");
-    $("#homeSearch").addClass("hide");
-    getCityData();
-  });
->>>>>>> 7b210ad6781cf08cb4cbde5e7165ab8c82ddef51
 
     var searchTermOriginal = $("#citySearchInput").val().trim();
     searchTerm = searchTermOriginal.replaceAll(" ", "%20");
@@ -32,10 +34,18 @@ $(document).ready(() => {
     $.ajax({
       url: queryURL,
       method: "GET"
-    }).then(function (response) {
+    }).then(function (cityResponse) {
 
       // Console.log result of city
-      console.log(response);
+      console.log(cityResponse);
+
+      cityName = cityResponse.candidates[0].name;
+      cityImage = cityResponse.candidates[0].photos[0].html_attributions[0];
+
+      console.log("cityName");
+      console.log(cityName);
+      console.log("cityImage");
+      console.log(cityImage);
 
       // Searching for Hotels in the city
       var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+in+" + searchTerm + "&key=AIzaSyANZUDCKbS7yUeabpf9yIcjCpISRowjMu0"
@@ -43,10 +53,17 @@ $(document).ready(() => {
       $.ajax({
         url: queryURL,
         method: "GET"
-      }).then(function (response) {
+      }).then(function (hotelsResponse) {
 
         // Console.log hotel results
-        console.log(response);
+        console.log(hotelsResponse);
+
+        for (let i = 0; i < hotelsResponse.results.length; i++) {
+          hotelNames.push(hotelsResponse.results[i].name);
+          hotelImages.push(hotelsResponse.results[i].photos[0].html_attributions[0]);
+          hotelLocationsLat.push(hotelsResponse.results[i].geometry.location.lat);
+          hotelLocationsLng.push(hotelsResponse.results[i].geometry.location.lng);
+        }
       });
     });
   };
