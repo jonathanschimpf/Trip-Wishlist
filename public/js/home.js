@@ -5,14 +5,17 @@ $(document).ready(() => {
   //   $(".member-name").text(data.email);
   // });
 
-  const cityInput = $("input#citySearchInput");
+  const cityInput = $("#citySearchInput").val();
 
   $("#citySearchButton").on("click", function (event) {
     event.preventDefault();
+    console.log("test")
     // $("ENTER JUMBOTRON RESULTS ID").removeClass("hide");
     // $("ENTER RESULTS CARD CLASS/ID").removeClass("hide");
-    $("#homeSearch").addClass("hide");
-    getCityData();
+    $("#homeSearch").addClass("d-none");
+    console.log("should have hidden")
+    console.log(cityInput)
+    // getCityData();
   });
 
   function getCityData() {
