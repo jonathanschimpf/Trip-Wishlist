@@ -5,27 +5,49 @@ $(document).ready(() => {
   //   $(".member-name").text(data.email);
   // });
 
-  const cityInput = $("input#citySearchInput");
-
+  var searchTerm;
+  
   $("#citySearchButton").on("click", function (event) {
     event.preventDefault();
+<<<<<<< HEAD
+=======
     // $("ENTER JUMBOTRON RESULTS ID").removeClass("hide");
     // $("ENTER RESULTS CARD CLASS/ID").removeClass("hide");
     $("#homeSearch").addClass("hide");
     getCityData();
   });
+>>>>>>> 7b210ad6781cf08cb4cbde5e7165ab8c82ddef51
 
-  function getCityData() {
+    var searchTermOriginal = $("#citySearchInput").val().trim();
+    searchTerm = searchTermOriginal.replaceAll(" ", "%20");
 
-    // var queryURL = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + cityInput + "&inputype=textquery&fields=photos,formatted_address,name,rating,opening_hours&key=AIzaSyB5T-Nu0v6U-8hSe_X9GqG3yjDdur5Ppyk"
+    getCityDataThenHotels();
+  });
 
-    var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyANZUDCKbS7yUeabpf9yIcjCpISRowjMu0"
+  function getCityDataThenHotels() {
+
+    // Searching for City
+    var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + searchTerm + "&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyANZUDCKbS7yUeabpf9yIcjCpISRowjMu0"
 
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function (response) {
+
+      // Console.log result of city
       console.log(response);
+
+      // Searching for Hotels in the city
+      var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+in+" + searchTerm + "&key=AIzaSyANZUDCKbS7yUeabpf9yIcjCpISRowjMu0"
+
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function (response) {
+
+        // Console.log hotel results
+        console.log(response);
+      });
     });
   };
 });
