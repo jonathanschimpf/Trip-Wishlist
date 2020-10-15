@@ -9,6 +9,9 @@ $(document).ready(() => {
 
   $("#citySearchButton").on("click", function (event) {
     event.preventDefault();
+    // $("ENTER JUMBOTRON RESULTS ID").removeClass("hide");
+    // $("ENTER RESULTS CARD CLASS/ID").removeClass("hide");
+    $("#homeSearch").addClass("hide");
     getCityData();
   });
 
