@@ -351,12 +351,6 @@ $(document).ready(() => {
 
   };
 
-  // function postTrip(Trip) {
-  //   $.post("/api/trip/", Trip, function () {
-  //     // window.location.href = "/home";
-  //   });
-  // }
-
 });
 
 
