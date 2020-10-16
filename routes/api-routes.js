@@ -78,7 +78,7 @@ module.exports = function (app) {
   });
 
   // Read ALL info about ALL trips of ONE user
-  app.get("/api/trip/:id", function (req, res) {
+  app.get("/api/trip/user/:user", function (req, res) {
     db.Trip.findAll({
       where: {
         user: req.params.user
