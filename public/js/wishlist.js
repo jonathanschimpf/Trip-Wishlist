@@ -22,24 +22,22 @@ $(document).ready(() => {
                 if (i < data.length) {
 
     html += `<div class="col mb-4 my-4">
-    <div class="card">
+    <div id="savedSearchCards" class="card">
     <img src="${info.museumImage}" class="card-img-top cardImageSizing" alt="...">
       <div class="card-body">
       <h5 class="card-title">${info.location}</h5>
           <hr>
       <p> Selected Hotel: ${info.hotelName}</p>
-      <a class="effect-shine" href="${info.hotelUrl}" target="_blank">View Hotel</a>‏‏‎
-      <br>
+      <a class="effect-shine" href="${info.hotelUrl}" target="_blank">View Hotel</a>‏‏
       <hr>
       <p> Selected Restaurant: ${info.restaurantName}</p>
-      <a class="effect-shine" href="${info.restaurantUrl}" target="_blank">View Restaurant</a>‏‏‎
-      <br>
+      <a class="effect-shine" href="${info.restaurantUrl}" target="_blank">View Restaurant</a>‏‏
       <hr>
       <p> Selected Museum: ${info.museumName}</p>
       <a class="effect-shine" href="${info.museumUrl}" target="_blank">View Museum</a>‏‏‎
-      <br>
       <hr>
       <button id=${i} class="btn btn-secondary my-2 my-sm-0 hotelSelector" type="submit">Delete Itinerary</button>
+      <br>
       </div>
     </div>
   </div>`
