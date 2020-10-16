@@ -39,7 +39,7 @@ $(document).ready(() => {
       <a class="effect-shine" href="${info.museumUrl}" target="_blank">View Museum</a>‏‏‎
       <br>
       <hr>
-      <button id=${i} class="btn btn-secondary my-2 my-sm-0 hotelSelector" type="submit">Delete Itinerary</button>
+      <button id=${i} class="btn btn-secondary my-2 my-sm-0 tripDeleteButton" type="submit">Delete Itinerary</button>
       </div>
     </div>
   </div>`
@@ -49,8 +49,27 @@ $(document).ready(() => {
 
             $("#wishlistCards").append(html);
 
+            $(".tripDeleteButton").on("click", function (event) {
+                event.preventDefault();
+        
+                deleteTrip(data[this.id].id);
+        
+              });
+
         });
     });
+
+    function deleteTrip(id) {
+        $.ajax({
+          method: "DELETE",
+          url: "/api/trip/" + id
+        })
+          .then(function() {
+            console.log("Deleted Trip")
+            
+            location.href='wishlist.html'
+          });
+      }
 });
 
 
