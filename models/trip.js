@@ -6,13 +6,40 @@ module.exports = function(sequelize, DataTypes) {
       location: {
         type: DataTypes.STRING
       },
-      hotel: {
+      hotelName: {
         type: DataTypes.STRING
       },
-      event: {
+      hotelImage: {
         type: DataTypes.STRING
       },
-      food: {
+      hotelUrl: {
+        type: DataTypes.STRING
+      },
+      hotelAddress: {
+        type: DataTypes.STRING
+      },
+      restaurantName: {
+        type: DataTypes.STRING
+      },
+      restaurantImage: {
+        type: DataTypes.STRING
+      },
+      restaurantUrl: {
+        type: DataTypes.STRING
+      },
+      restaurantAddress: {
+        type: DataTypes.STRING
+      },
+      museumName: {
+        type: DataTypes.STRING
+      },
+      museumImage: {
+        type: DataTypes.STRING
+      },
+      museumUrl: {
+        type: DataTypes.STRING
+      },
+      museumAddress: {
         type: DataTypes.STRING
       }
     });

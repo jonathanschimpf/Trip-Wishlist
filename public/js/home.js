@@ -10,6 +10,8 @@ $(document).ready(() => {
   // Variables for City
 
   // Variables for Hotels
+  var hotelNumber;
+
   var hotelNames = [];
   var hotelImages = [];
   var hotelUrls = [];
@@ -25,10 +27,20 @@ $(document).ready(() => {
   // 16093 meters = 10 miles
 
   // Variables for Restaurants
+  var restaurantNumber;
+  
+  var restaurantNames = [];
+  var restaurantImages = [];
+  var restaurantUrls = [];
+  var restaurantAddresses = [];
 
-  // Details for Selected Hotel
-
-  // Details for Selected Restaurant
+  // Variables for Museums
+  var museumNumber;
+  
+  var museumNames = [];
+  var museumImages = [];
+  var museumUrls = [];
+  var museumAddresses = [];
 
 
 
@@ -44,8 +56,6 @@ $(document).ready(() => {
 
   $(".hotelSelector").on("click", function (event) {
     event.preventDefault();
-    
-    var hotelNumber = this.id;
     
     lat = hotelLatitude[this.id];
     long = hotelLongitude[this.id];
@@ -77,7 +87,11 @@ $(document).ready(() => {
         hotelNames.push(hotelsResponse.businesses[i].name);
         hotelImages.push(hotelsResponse.businesses[i].image_url);
         hotelUrls.push(hotelsResponse.businesses[i].url);
-        hotelAddresses.push(hotelsResponse.businesses[i].location.address1);
+
+        var currentHotelAddress = `${hotelsResponse.businesses[i].location.address1} ${hotelsResponse.businesses[i].location.city}, ${hotelsResponse.businesses[i].location.state} ${hotelsResponse.businesses[i].location.zip_code}`
+
+        hotelAddresses.push(currentHotelAddress);
+
         hotelLatitude.push(hotelsResponse.businesses[i].coordinates.latitude);
         hotelLongitude.push(hotelsResponse.businesses[i].coordinates.longitude);
       }
@@ -115,9 +129,10 @@ $(document).ready(() => {
       $("#hotelCards").append(html);
 
       $(".hotelSelector").on("click", function (event) {
-
-
         event.preventDefault();
+
+        hotelNumber = this.id;
+
         lat = hotelLatitude[this.id];
         long = hotelLongitude[this.id];
         searchRestaurants();
@@ -151,6 +166,16 @@ $(document).ready(() => {
 
       // Console.log result of restaurants
       console.log(restaurantsResponse);
+
+      for (let i = 0; i < restaurantsResponse.businesses.length; i++) {
+        restaurantNames.push(restaurantsResponse.businesses[i].name);
+        restaurantImages.push(restaurantsResponse.businesses[i].image_url);
+        restaurantUrls.push(restaurantsResponse.businesses[i].url);
+
+        var currentRestaurantAddress = `${restaurantsResponse.businesses[i].location.address1} ${restaurantsResponse.businesses[i].location.city}, ${restaurantsResponse.businesses[i].location.state} ${restaurantsResponse.businesses[i].location.zip_code}`
+
+        restaurantAddresses.push(currentRestaurantAddress);
+      }
 
       $("#cityName").text(searchTerm);
 
@@ -186,9 +211,10 @@ $(document).ready(() => {
       $("#restaurantCards").append(html);
 
       $(".restaurantSelector").on("click", function (event) {
-
-
         event.preventDefault();
+
+        restaurantNumber = this.id;
+
         searchMuseums();
 
 
@@ -219,6 +245,16 @@ $(document).ready(() => {
       // Console.log result of Museums
 
       console.log(museumsResponse);
+
+      for (let i = 0; i < museumsResponse.businesses.length; i++) {
+        museumNames.push(museumsResponse.businesses[i].name);
+        museumImages.push(museumsResponse.businesses[i].image_url);
+        museumUrls.push(museumsResponse.businesses[i].url);
+
+        var currentMuseumAddress = `${museumsResponse.businesses[i].location.address1} ${museumsResponse.businesses[i].location.city}, ${museumsResponse.businesses[i].location.state} ${museumsResponse.businesses[i].location.zip_code}`
+
+        museumAddresses.push(currentMuseumAddress);
+      }
 
       $("#cityName").text(searchTerm);
 
@@ -254,9 +290,39 @@ $(document).ready(() => {
 
       $("#museumCards").append(html);
 
+      $(".museumSelector").on("click", function (event) {
+        event.preventDefault();
+
+        museumNumber = this.id;
+
+        constructTrip();
+      });
+
     });
   
   };
+
+  // Creating the Total Trip to be pushed
+  function constructTrip() {
+    var newTrip = {
+      user: "user goes here",
+      location: searchTerm,
+      hotelName: hotelNames[hotelNumber],
+      hotelImage: hotelImages[hotelNumber],
+      hotelUrl: hotelUrls[hotelNumber],
+      hotelAddress: hotelAddresses[hotelNumber],
+      restaurantName: restaurantNames[restaurantNumber],
+      restaurantImage: restaurantImages[restaurantNumber],
+      restaurantUrl: restaurantUrls[restaurantNumber],
+      restaurantAddress: restaurantAddresses[restaurantNumber],
+      museumName: museumNames[museumNumber],
+      museumImage: museumImages[museumNumber],
+      museumUrl: museumUrls[museumNumber],
+      museumAddress: museumAddresses[museumNumber],
+    };
+
+    console.log(newTrip);
+  }
   
 });
 
