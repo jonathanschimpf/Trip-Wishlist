@@ -342,18 +342,11 @@ $(document).ready(() => {
           console.log("Posted Trip To Database");
         });
 
-        // postTrip(newTrip);
       });
 
     });
 
   };
-
-  // function postTrip(Trip) {
-  //   $.post("/api/trip/", Trip, function () {
-  //     // window.location.href = "/home";
-  //   });
-  // }
 
 });
 
