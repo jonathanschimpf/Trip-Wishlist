@@ -13,6 +13,7 @@ $(document).ready(() => {
   var hotelNames = [];
   var hotelImages = [];
   var hotelUrls = [];
+  var hotelAddresses = [];
   var hotelLatitude = [];
   var hotelLongitude = [];
 
@@ -36,7 +37,7 @@ $(document).ready(() => {
     $("#homeSearch").addClass("d-none");
     $("#resultsJumbotron").removeClass("d-none");
     $("#resultsCards").removeClass("d-none");
-    
+
     searchTerm = $("#citySearchInput").val().trim();
     searchHotels();
   });
@@ -44,7 +45,7 @@ $(document).ready(() => {
 
 
   // Get hotels in the city
-  
+
   function searchHotels() {
     // Searching for Hotels in the city
     var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + "hotels" + "&location=" + searchTerm
@@ -54,8 +55,8 @@ $(document).ready(() => {
       method: "GET",
       headers: {
         Authorization: "Bearer 9IjGkqLOG2uOZj7FFlalM357o1tEOz_z0_qEjovAcnTGUag2dDiKr9IFeszdJOX0YZK1gmTLSpsb2wHqpOoCll95ZWNISAskRrRVvrbbQvc5j_fq1PiQCyQndaeIX3Yx",
-    },
-    dataType: 'json',
+      },
+      dataType: 'json',
     }).then(function (hotelsResponse) {
 
       // Console.log hotel results
@@ -65,17 +66,62 @@ $(document).ready(() => {
         hotelNames.push(hotelsResponse.businesses[i].name);
         hotelImages.push(hotelsResponse.businesses[i].image_url);
         hotelUrls.push(hotelsResponse.businesses[i].url);
+        hotelAddresses.push(hotelsResponse.businesses[i].location.address1);
         hotelLatitude.push(hotelsResponse.businesses[i].coordinates.latitude);
         hotelLongitude.push(hotelsResponse.businesses[i].coordinates.longitude);
       }
+
+      $("#cityName").text(searchTerm);
+
+
+      let html = ""
+
+      // clearing results after each search.
+      $("#hotelCards").empty();
+
+      // placing information from here into a generated cards
+      hotelsResponse.businesses.forEach((hotel, i) => {
+
+        if (i < 18) {
+
+          html += `<div class="col mb-4 my-4">
+          <div class="card">
+          <img src="${hotel.image_url}" class="card-img-top cardImageSizing" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">${hotel.name}</h5>
+                <hr>
+            <p>Address: ${hotel.location.address1}</p>
+            <p>${hotel.location.city}, ${hotel.location.state} ${hotel.location.zip_code}</p>
+            <hr>
+            <a href="${hotel.url}" target="_blank">View Hotel</a>‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎
+            <button id=${i} class="btn btn-secondary my-2 my-sm-0 hotelSelector" type="submit">Save Hotel</button>
+            </div>
+          </div>
+        </div>`
+        }
+      });
+
+      $("#hotelCards").append(html);
+
+      $(".hotelSelector").on("click", function (event) {
+
+
+        event.preventDefault();
+        lat = hotelLatitude[this.id];
+        long = hotelLongitude[this.id];
+        searchRestaurants();
+
+      });
+
     });
+
   };
 
 
 
   // Select Hotel
 
-  function selectHotel(){
+  function selectHotel() {
     // lat = hotelLatitude[i];
     // long = hotelLongitude[i];
   }
@@ -83,10 +129,81 @@ $(document).ready(() => {
 
 
   // Get list of local restaurants
-  
+
   function searchRestaurants() {
+
+    $("#resultsCards").addClass("d-none");
+    $("#resultsCards2").removeClass("d-none");
+    
     // Searching for Restaurants
-    var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=hotels&latitude=" + lat + "&longitude=" + long + "&radius=" + radius
+    var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=" + lat + "&longitude=" + long + "&radius=" + radius
+
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+      headers: {
+        Authorization: "Bearer 9IjGkqLOG2uOZj7FFlalM357o1tEOz_z0_qEjovAcnTGUag2dDiKr9IFeszdJOX0YZK1gmTLSpsb2wHqpOoCll95ZWNISAskRrRVvrbbQvc5j_fq1PiQCyQndaeIX3Yx",
+      },
+      dataType: 'json',
+    }).then(function (restaurantsResponse) {
+
+      // Console.log result of restaurants
+      console.log(restaurantsResponse);
+
+      $("#cityName").text(searchTerm);
+
+
+      let html = ""
+
+      // clearing results after each search.
+      $("#hotelCards").empty();
+      $("#restaurantCards").empty();
+
+      // placing information from here into a generated cards
+      restaurantsResponse.businesses.forEach((restaurant, i) => {
+
+        if (i < 18) {
+
+          html += `<div class="col mb-4 my-4">
+        <div class="card">
+        <img src="${restaurant.image_url}" class="card-img-top cardImageSizing" alt="...">
+          <div class="card-body">
+          <h5 class="card-title">${restaurant.name}</h5>
+              <hr>
+          <p>Address: ${restaurant.location.address1}</p>
+          <p>${restaurant.location.city}, ${restaurant.location.state} ${restaurant.location.zip_code}</p>
+          <hr>
+          <a href="${restaurant.url}" target="_blank">View Restaurant</a>‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎
+          <button id=${i} class="btn btn-secondary my-2 my-sm-0 restaurantSelector" type="submit">Save Restaurant</button>
+          </div>
+        </div>
+      </div>`
+        }
+      });
+
+      $("#restaurantCards").append(html);
+
+      $(".restaurantSelector").on("click", function (event) {
+
+
+        event.preventDefault();
+        searchMuseums();
+
+
+      });
+
+    });
+
+  };
+
+  function searchMuseums() {
+
+    $("#resultsCards2").addClass("d-none");
+    $("#resultsCards3").removeClass("d-none");
+
+        // Searching for Museums
+        
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=museums&latitude=" + lat + "&longitude=" + long + "&radius=" + radius
 
     $.ajax({
       url: queryURL,
@@ -95,13 +212,50 @@ $(document).ready(() => {
         Authorization: "Bearer 9IjGkqLOG2uOZj7FFlalM357o1tEOz_z0_qEjovAcnTGUag2dDiKr9IFeszdJOX0YZK1gmTLSpsb2wHqpOoCll95ZWNISAskRrRVvrbbQvc5j_fq1PiQCyQndaeIX3Yx",
     },
     dataType: 'json',
-    }).then(function (restaurantsResponse) {
+    }).then(function (museumsResponse) {
 
-      // Console.log result of restaurants
-      console.log(restaurantsResponse);
+      // Console.log result of Museums
+
+      console.log(museumsResponse);
+
+      $("#cityName").text(searchTerm);
+
+
+      let html = ""
+
+      // clearing results after each search.
+      $("#hotelCards").empty();
+      $("#restaurantCards").empty();
+      $("#museumCards").empty();
+
+      // placing information from here into a generated cards
+      museumsResponse.businesses.forEach((museum, i) => {
+
+        if (i < 18) {
+
+          html += `<div class="col mb-4 my-4">
+        <div class="card">
+        <img src="${museum.image_url}" class="card-img-top cardImageSizing" alt="...">
+          <div class="card-body">
+          <h5 class="card-title">${museum.name}</h5>
+              <hr>
+          <p>Address: ${museum.location.address1}</p>
+          <p>${museum.location.city}, ${museum.location.state} ${museum.location.zip_code}</p>
+          <hr>
+          <a href="${museum.url}" target="_blank">View Museum</a>‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎
+          <button id=${i} class="btn btn-secondary my-2 my-sm-0 museumSelector" type="submit">Save Museum</button>
+          </div>
+        </div>
+      </div>`
+        }
+      });
+
+      $("#museumCards").append(html);
 
     });
+  
   };
+  
 });
 
 
@@ -129,7 +283,7 @@ $(document).ready(() => {
 
 
 // // Get city data and local hotels
-  
+
 // function getCityDataThenHotels() {
 //   // Searching for City
 //   var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + searchTerm + "&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyANZUDCKbS7yUeabpf9yIcjCpISRowjMu0"
