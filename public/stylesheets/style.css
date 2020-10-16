@@ -115,11 +115,16 @@ button:hover {
   background: #EAECEF !important;
   margin-right: 10px !important;
   margin-left: 10px !important;
-  min-height: 300px;
-  max-height: 300px;
+  height: 525px;
   overflow-y: auto;
   -webkit-box-shadow: 8px 10px 10px rgb(65, 65, 65);
   -moz-box-shadow: 8px 10px 10px rgb(65, 65, 65);
   box-shadow: 8px 10px 10px rgb(65, 65, 65);
+
+}
+
+.cardImageSizing {
+
+  height: 250px !important;
 
 }
