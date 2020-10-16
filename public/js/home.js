@@ -1,9 +1,13 @@
 $(document).ready(() => {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
-  // $.get("/api/user_data").then(data => {
-  //   $(".member-name").text(data.email);
-  // });
+
+  var currentUser;
+
+  $.get("/api/user_data").then(data => {
+    // $(".member-name").text(data.email);
+    currentUser = data.email;
+  });
 
   var searchTerm;
 
@@ -28,7 +32,7 @@ $(document).ready(() => {
 
   // Variables for Restaurants
   var restaurantNumber;
-  
+
   var restaurantNames = [];
   var restaurantImages = [];
   var restaurantUrls = [];
@@ -36,7 +40,7 @@ $(document).ready(() => {
 
   // Variables for Museums
   var museumNumber;
-  
+
   var museumNames = [];
   var museumImages = [];
   var museumUrls = [];
@@ -56,7 +60,7 @@ $(document).ready(() => {
 
   $(".hotelSelector").on("click", function (event) {
     event.preventDefault();
-    
+
     lat = hotelLatitude[this.id];
     long = hotelLongitude[this.id];
 
@@ -160,7 +164,7 @@ $(document).ready(() => {
     $("#resultsCards2").removeClass("d-none");
     $("#hotelGreeting").addClass("d-none");
     $("#restaurantGreeting").removeClass("d-none");
-    
+
     // Searching for Restaurants
     var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=" + lat + "&longitude=" + long + "&radius=" + radius
 
@@ -247,17 +251,17 @@ $(document).ready(() => {
     $("#restaurantGreeting").addClass("d-none");
     $("#museumGreeting").removeClass("d-none");
 
-        // Searching for Museums
-        
-        var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=museums&latitude=" + lat + "&longitude=" + long + "&radius=" + radius
+    // Searching for Museums
+
+    var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=museums&latitude=" + lat + "&longitude=" + long + "&radius=" + radius
 
     $.ajax({
       url: queryURL,
       method: "GET",
       headers: {
         Authorization: "Bearer 9IjGkqLOG2uOZj7FFlalM357o1tEOz_z0_qEjovAcnTGUag2dDiKr9IFeszdJOX0YZK1gmTLSpsb2wHqpOoCll95ZWNISAskRrRVvrbbQvc5j_fq1PiQCyQndaeIX3Yx",
-    },
-    dataType: 'json',
+      },
+      dataType: 'json',
     }).then(function (museumsResponse) {
 
       // Console.log result of Museums
@@ -315,35 +319,42 @@ $(document).ready(() => {
 
         museumNumber = this.id;
 
-        constructTrip();
+        var newTrip = {
+          user: currentUser,
+          location: searchTerm,
+          hotelName: hotelNames[hotelNumber],
+          hotelImage: hotelImages[hotelNumber],
+          hotelUrl: hotelUrls[hotelNumber],
+          hotelAddress: hotelAddresses[hotelNumber],
+          restaurantName: restaurantNames[restaurantNumber],
+          restaurantImage: restaurantImages[restaurantNumber],
+          restaurantUrl: restaurantUrls[restaurantNumber],
+          restaurantAddress: restaurantAddresses[restaurantNumber],
+          museumName: museumNames[museumNumber],
+          museumImage: museumImages[museumNumber],
+          museumUrl: museumUrls[museumNumber],
+          museumAddress: museumAddresses[museumNumber],
+        };
+
+        console.log(newTrip);
+
+        $.post("/api/trip/", newTrip, function () {
+          console.log("Posted Trip To Database");
+        });
+
+        // postTrip(newTrip);
       });
 
     });
-  
+
   };
 
-  // Creating the Total Trip to be pushed
-  function constructTrip() {
-    var newTrip = {
-      user: "user goes here",
-      location: searchTerm,
-      hotelName: hotelNames[hotelNumber],
-      hotelImage: hotelImages[hotelNumber],
-      hotelUrl: hotelUrls[hotelNumber],
-      hotelAddress: hotelAddresses[hotelNumber],
-      restaurantName: restaurantNames[restaurantNumber],
-      restaurantImage: restaurantImages[restaurantNumber],
-      restaurantUrl: restaurantUrls[restaurantNumber],
-      restaurantAddress: restaurantAddresses[restaurantNumber],
-      museumName: museumNames[museumNumber],
-      museumImage: museumImages[museumNumber],
-      museumUrl: museumUrls[museumNumber],
-      museumAddress: museumAddresses[museumNumber],
-    };
+  // function postTrip(Trip) {
+  //   $.post("/api/trip/", Trip, function () {
+  //     // window.location.href = "/home";
+  //   });
+  // }
 
-    console.log(newTrip);
-  }
-  
 });
 
 

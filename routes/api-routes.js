@@ -60,9 +60,18 @@ module.exports = function (app) {
     db.Trip.create({
       user: req.body.user,
       location: req.body.location,
-      hotel: req.body.hotel,
-      event: req.body.event,
-      food: req.body.food,
+      hotelName: req.body.hotelName,
+      hotelImage: req.body.hotelImage,
+      hotelUrl: req.body.hotelUrl,
+      hotelAddress: req.body.hotelAddress,
+      restaurantName: req.body.restaurantName,
+      restaurantImage: req.body.restaurantImage,
+      restaurantUrl: req.body.restaurantUrl,
+      restaurantAddress: req.body.restaurantAddress,
+      museumName: req.body.museumName,
+      museumImage: req.body.museumImage,
+      museumUrl: req.body.museumUrl,
+      museumAddress: req.body.museumAddress,
     }).then(function(dbTrip) {
       res.json(dbTrip);
     });
