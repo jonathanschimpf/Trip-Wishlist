@@ -80,6 +80,9 @@ $(document).ready(() => {
       dataType: 'json',
     }).then(function (hotelsResponse) {
 
+      $("#cityName").text(searchTerm);
+      $("#hotelGreeting").text("Select your ideal accommodation below.");
+
       // Console.log hotel results
       console.log(hotelsResponse);
 
@@ -95,9 +98,6 @@ $(document).ready(() => {
         hotelLatitude.push(hotelsResponse.businesses[i].coordinates.latitude);
         hotelLongitude.push(hotelsResponse.businesses[i].coordinates.longitude);
       }
-
-      $("#cityName").text(searchTerm);
-
 
       let html = ""
 
@@ -118,7 +118,9 @@ $(document).ready(() => {
             <p>Address: ${hotel.location.address1}</p>
             <p>${hotel.location.city}, ${hotel.location.state} ${hotel.location.zip_code}</p>
             <hr>
-            <a href="${hotel.url}" target="_blank">View Hotel</a>‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎
+            <a class="effect-shine" href="${hotel.url}" target="_blank">View Hotel</a>‏‏‎
+            <br>
+            <hr>
             <button id=${i} class="btn btn-secondary my-2 my-sm-0 hotelSelector" type="submit">Save Hotel</button>
             </div>
           </div>
@@ -149,8 +151,15 @@ $(document).ready(() => {
 
   function searchRestaurants() {
 
+    $("#cityName2").text(searchTerm);
+    $("#restaurantGreeting").text("Select a dining preference below.");
+
     $("#resultsCards").addClass("d-none");
+    $("#resultsJumbotron").addClass("d-none");
+    $("#resultsJumbotron2").removeClass("d-none");
     $("#resultsCards2").removeClass("d-none");
+    $("#hotelGreeting").addClass("d-none");
+    $("#restaurantGreeting").removeClass("d-none");
     
     // Searching for Restaurants
     var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=" + lat + "&longitude=" + long + "&radius=" + radius
@@ -200,7 +209,9 @@ $(document).ready(() => {
           <p>Address: ${restaurant.location.address1}</p>
           <p>${restaurant.location.city}, ${restaurant.location.state} ${restaurant.location.zip_code}</p>
           <hr>
-          <a href="${restaurant.url}" target="_blank">View Restaurant</a>‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎
+          <a class="effect-shine" href="${restaurant.url}" target="_blank">View Restaurant</a>‏
+          <br>
+          <hr>‏‏‎‏‏‎‏‏‎
           <button id=${i} class="btn btn-secondary my-2 my-sm-0 restaurantSelector" type="submit">Save Restaurant</button>
           </div>
         </div>
@@ -226,8 +237,15 @@ $(document).ready(() => {
 
   function searchMuseums() {
 
+    $("#cityName3").text(searchTerm);
+    $("#museumGreeting").text("Select a museum experience below.");
+
     $("#resultsCards2").addClass("d-none");
+    $("#resultsJumbotron2").addClass("d-none");
+    $("#resultsJumbotron3").removeClass("d-none");
     $("#resultsCards3").removeClass("d-none");
+    $("#restaurantGreeting").addClass("d-none");
+    $("#museumGreeting").removeClass("d-none");
 
         // Searching for Museums
         
@@ -280,7 +298,9 @@ $(document).ready(() => {
           <p>Address: ${museum.location.address1}</p>
           <p>${museum.location.city}, ${museum.location.state} ${museum.location.zip_code}</p>
           <hr>
-          <a href="${museum.url}" target="_blank">View Museum</a>‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎
+          <a class="effect-shine" href="${museum.url}" target="_blank">View Museum</a>‏‏‎
+          <br>
+          <hr>‏‏‎
           <button id=${i} class="btn btn-secondary my-2 my-sm-0 museumSelector" type="submit">Save Museum</button>
           </div>
         </div>
