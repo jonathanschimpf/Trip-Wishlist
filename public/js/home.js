@@ -42,6 +42,17 @@ $(document).ready(() => {
     searchHotels();
   });
 
+  $(".hotelSelector").on("click", function (event) {
+    event.preventDefault();
+    
+    var hotelNumber = this.id;
+    
+    lat = hotelLatitude[this.id];
+    long = hotelLongitude[this.id];
+
+    searchRestaurants();
+  });
+
 
 
   // Get hotels in the city
@@ -101,6 +112,29 @@ $(document).ready(() => {
 
       // Console.log result of restaurants
       console.log(restaurantsResponse);
+
+    });
+  };
+
+
+
+  // Get list of local events
+  
+  function searchEvents() {
+    // Searching for Events
+    var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/events/latitude=" + lat + "&longitude=" + long + "&radius=" + radius
+
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+      headers: {
+        Authorization: "Bearer 9IjGkqLOG2uOZj7FFlalM357o1tEOz_z0_qEjovAcnTGUag2dDiKr9IFeszdJOX0YZK1gmTLSpsb2wHqpOoCll95ZWNISAskRrRVvrbbQvc5j_fq1PiQCyQndaeIX3Yx",
+    },
+    dataType: 'json',
+    }).then(function (eventsResponse) {
+
+      // Console.log result of events
+      console.log(eventsResponse);
 
     });
   };
