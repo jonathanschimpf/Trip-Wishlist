@@ -342,6 +342,8 @@ $(document).ready(() => {
           console.log("Posted Trip To Database");
         });
 
+        location.href='wishlist.html'
+        
         // postTrip(newTrip);
       });
 
