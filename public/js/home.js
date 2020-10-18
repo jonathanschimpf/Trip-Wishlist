@@ -120,7 +120,7 @@ $(document).ready(() => {
             <div class="card-body">
             <h5 class="card-title">${hotel.name}</h5>
                 <hr>
-            <p><span style = "font-weight: bold">Address:</span> ${hotel.location.address1}</p>
+            <p><strong>Address:</strong> ${hotel.location.address1}</p>
             <p>${hotel.location.city}, ${hotel.location.state} ${hotel.location.zip_code}</p>
             <hr>
             <a class="effect-shine" href="${hotel.url}" target="_blank">View Hotel</a>‏‏‎

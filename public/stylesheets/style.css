@@ -130,8 +130,8 @@ button:hover {
 
   background: #EAECEF !important;
   border:none;
-  height: 800px;
-  
+  height: 775px;
+  overflow-y:auto;
   -webkit-box-shadow: 8px 10px 10px rgb(65, 65, 65);
   -moz-box-shadow: 8px 10px 10px rgb(65, 65, 65);
   box-shadow: 8px 10px 10px rgb(65, 65, 65);

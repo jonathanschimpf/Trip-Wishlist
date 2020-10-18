@@ -31,16 +31,12 @@ $(document).ready(() => {
                  <div class="card savedSearchCardStyling">
                 <img src="${info.museumImage}" class="card-img-top cardImageSizing" alt="...">
                 <div class="card-body">
-                <h5 class="card-title">${info.location}</h5>
-                <hr>
-                <p><strong>Hotel: </strong>${info.hotelName}</p
-                <hr>‏‏‎
-                <p><strong>Restaurant: </strong>${info.restaurantName}</p
-                <hr>‏‏‎
-                <p><strong>Museum: </strong>${info.museumName}</p>
-                <hr>
+                <h5 class="card-title">${info.location}</h5><hr>
+                <p><strong>Hotel: </strong>${info.hotelName}</p>‏‏‎
+                <p><strong>Restaurant: </strong>${info.restaurantName}</p>‏‏‎
+                <p><strong>Museum: </strong>${info.museumName}</p><hr>
                 <a class="effect-shine" href="${info.hotelUrl}" target="_blank">View Hotel</a><br>
-                <a class="effect-shine" href="${info.restaurantUrl}" target="_blank">View Restaurant</a></br>
+                <a class="effect-shine" href="${info.restaurantUrl}" target="_blank">View Restaurant</a><br>
                 <a class="effect-shine" href="${info.museumUrl}" target="_blank">View Museum</a>‏‏‎
                 <hr>
                 <button id=${i} class="btn btn-secondary my-2 my-sm-0 tripDeleteButton" type="submit">Delete Itinerary</button>
