@@ -41,7 +41,7 @@ $(document).ready(() => {
                 <hr>
                 <a class="effect-shine" href="${info.hotelUrl}" target="_blank">View Hotel</a><br>
                 <a class="effect-shine" href="${info.restaurantUrl}" target="_blank">View Restaurant</a></br>
-                <a class="effect-shine" href="${info.museumUrl}" target="_blank">View Museum</a><br>‏‏‎
+                <a class="effect-shine" href="${info.museumUrl}" target="_blank">View Museum</a>‏‏‎
                 <hr>
                 <button id=${i} class="btn btn-secondary my-2 my-sm-0 tripDeleteButton" type="submit">Delete Itinerary</button>
                 <br>
