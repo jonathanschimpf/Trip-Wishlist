@@ -115,16 +115,15 @@ $(document).ready(() => {
         if (i < 18) {
 
           html += `<div class="col mb-4 my-4">
-          <div class="card">
+          <div class="card resultCardStyling">
           <img src="${hotel.image_url}" class="card-img-top cardImageSizing" alt="...">
             <div class="card-body">
             <h5 class="card-title">${hotel.name}</h5>
                 <hr>
-            <p>Address: ${hotel.location.address1}</p>
+            <p><span style = "font-weight: bold">Address:</span> ${hotel.location.address1}</p>
             <p>${hotel.location.city}, ${hotel.location.state} ${hotel.location.zip_code}</p>
             <hr>
             <a class="effect-shine" href="${hotel.url}" target="_blank">View Hotel</a>‏‏‎
-            <br>
             <hr>
             <button id=${i} class="btn btn-secondary my-2 my-sm-0 hotelSelector" type="submit">Save Hotel</button>
             </div>
@@ -206,12 +205,12 @@ $(document).ready(() => {
         if (i < 18) {
 
           html += `<div class="col mb-4 my-4">
-        <div class="card">
+        <div class="card resultCardStyling">
         <img src="${restaurant.image_url}" class="card-img-top cardImageSizing" alt="...">
           <div class="card-body">
           <h5 class="card-title">${restaurant.name}</h5>
               <hr>
-          <p>Address: ${restaurant.location.address1}</p>
+          <p><b>Address:</b> ${restaurant.location.address1}</p>
           <p>${restaurant.location.city}, ${restaurant.location.state} ${restaurant.location.zip_code}</p>
           <hr>
           <a class="effect-shine" href="${restaurant.url}" target="_blank">View Restaurant</a>‏
@@ -295,12 +294,12 @@ $(document).ready(() => {
         if (i < 18) {
 
           html += `<div class="col mb-4 my-4">
-        <div class="card">
+        <div class="card resultCardStyling">
         <img src="${museum.image_url}" class="card-img-top cardImageSizing" alt="...">
           <div class="card-body">
           <h5 class="card-title">${museum.name}</h5>
               <hr>
-          <p>Address: ${museum.location.address1}</p>
+          <p><b>Address:</b> ${museum.location.address1}</p>
           <p>${museum.location.city}, ${museum.location.state} ${museum.location.zip_code}</p>
           <hr>
           <a class="effect-shine" href="${museum.url}" target="_blank">View Museum</a>‏‏‎
@@ -351,6 +350,8 @@ $(document).ready(() => {
     });
 
   };
+
+
 
 });
 

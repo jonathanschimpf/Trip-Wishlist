@@ -110,7 +110,7 @@ button:hover {
 
 /* adjustments for cards */
 
-.card {
+.resultCardStyling {
 
   background: #EAECEF !important;
   margin-right: 10px !important;
@@ -126,14 +126,12 @@ button:hover {
 
 /* adjustments for saved searches cards  */
 
-#savedSearchCards {
+.savedSearchCardStyling {
 
   background: #EAECEF !important;
-  margin-right: 10px !important;
-  margin-left: 10px !important;
   border:none;
   height: 800px;
-  overflow-y: auto;
+  
   -webkit-box-shadow: 8px 10px 10px rgb(65, 65, 65);
   -moz-box-shadow: 8px 10px 10px rgb(65, 65, 65);
   box-shadow: 8px 10px 10px rgb(65, 65, 65);
