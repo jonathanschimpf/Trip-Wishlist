@@ -39,7 +39,7 @@ $(document).ready(() => {
                 <a class="effect-shine" href="${info.restaurantUrl}" target="_blank">View Restaurant</a><br>
                 <a class="effect-shine" href="${info.museumUrl}" target="_blank">View Museum</a>‏‏‎
                 <hr>
-                <button id=${i} class="btn btn-secondary my-2 my-sm-0 tripDeleteButton" type="submit">Delete Itinerary</button>
+                <button id=${i} class="btn btn-secondary my-2 my-sm-0 tripDeleteButton" type="submit">Delete Trip</button>
                 <br>
                 <br>
                 </div>

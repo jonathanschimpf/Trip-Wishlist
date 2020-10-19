@@ -9,6 +9,7 @@ form.signup, form.login {
 body {
 
   font-family: 'Work Sans', sans-serif !important;
+  
 
 }
 
@@ -92,8 +93,8 @@ button {
 
 button:hover {
 
-  background: #7a7a7a !important;
-  transition: all 0.45s ease-in-out !important;
+  background: #e9a942 !important;
+  transition: all 0.85s ease-in-out !important;
 
 }
 
@@ -129,6 +130,8 @@ button:hover {
 .savedSearchCardStyling {
 
   background: #EAECEF !important;
+  margin-right: 10px !important;
+  margin-left: 10px !important;
   border:none;
   height: 795px;
   overflow-y:auto;
@@ -138,6 +141,7 @@ button:hover {
 
 }
 
+ /* adjuts the card images so they get zoomed in on // not distorted  */
 
 .cardImageSizing {
 
@@ -145,4 +149,21 @@ button:hover {
   height:300px;
   object-fit: cover;
 
+}
+
+/* keeps the city search input the same size regardless of scale */
+
+#citySearchInput {
+
+  max-width: 212px;
+  margin-right: 5px;
+
+}
+
+/* responsive font media query for city names that are longer */
+
+@media screen and (max-width: 400px) {
+  h1.responsiveH1Font {
+    font-size: 12vw;
+  }
 }

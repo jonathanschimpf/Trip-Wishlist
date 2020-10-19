@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Trip Wish List | Home</title>
+  <title>Trip Wishlist | Home</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -42,12 +42,27 @@
 
   <link href="stylesheets/style.css" rel="stylesheet">
 
+  <style>
+
+    body {
+
+      background-image: url(img/cesar-couto-GRADIENT-alt-no-vignette-unsplash_1920.jpg);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-color: black;
+
+    };
+
+  </style>
+
 </head>
 
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="/home">Trip Wish List</a>
+    <a class="navbar-brand" href="/home">Trip Wishlist</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
       aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -59,7 +74,7 @@
           <a class="nav-link" href="/home">Search <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="wishlist.html">Wish List</a>
+          <a class="nav-link" href="wishlist.html">Wishlist</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
@@ -78,12 +93,12 @@
 
   <div class="container" id="homeSearch">
     <div class="jumbotron text-center">
-      <h1 class="display-3">Trip Wish List</h1>
-      <hr>
+      <h1 class="display-4 text-center responsiveH1Font">Create Wishlist</h1>
+      <hr style="height:4px;">
       <p class="lead">Enter a desired city below:</p>
       <br>
       <form class="form-inline my-2 my-lg-0 vertical-search-and-button-home">
-        <input id="citySearchInput" class="form-control mr-sm-2" type="text" placeholder="Search">
+        <input id="citySearchInput" class="form-control mr-sm-2" type="text" placeholder="Where to?">
         <button id="citySearchButton" class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
@@ -95,8 +110,8 @@
 
   <div class="container d-none" id="resultsJumbotron">
     <div class="jumbotron text-center">
-      <h1 class="display-3 text-center" id="cityName"></h1>
-      <hr>
+      <h1 class="display-4 text-center responsiveH1Font" id="cityName"></h1>
+      <hr style="height:4px;">
       <br>
       <h5 id="hotelGreeting"></h5>
     </div>
@@ -108,8 +123,8 @@
 
   <div class="container d-none" id="resultsJumbotron2">
     <div class="jumbotron text-center">
-      <h1 class="display-3 text-center" id="cityName2"></h1>
-      <hr>
+      <h1 class="display-4 text-center responsiveH1Font" id="cityName2"></h1>
+      <hr style="height:4px;">
       <br>
       <h5 class="d-none" id="restaurantGreeting"></h5>
     </div>
@@ -121,8 +136,8 @@
 
   <div class="container d-none" id="resultsJumbotron3">
     <div class="jumbotron text-center">
-      <h1 class="display-3 text-center" id="cityName3"></h1>
-      <hr>
+      <h1 class="display-4 text-center responsiveH1Font" id="cityName3"></h1>
+      <hr style="height:4px;">
       <br>
       <h5 class="d-none" id="museumGreeting"></h5>
     </div>
@@ -165,7 +180,6 @@
 
   <br>
   <br>
-  <!-- <hr> -->
   <br>
   <br>
   <br>
