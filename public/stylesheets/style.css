@@ -32,9 +32,9 @@ body {
 
   justify-content: center !important;
   /* margin: 10px 10px 10px 10px auto !important; */
-  -webkit-box-shadow: 8px 10px 10px rgb(65, 65, 65);
-  -moz-box-shadow: 8px 10px 10px rgb(65, 65, 65);
-  box-shadow: 8px 10px 10px rgb(65, 65, 65);
+  -webkit-box-shadow: 8px 10px 15px rgb(65, 65, 65);
+  -moz-box-shadow: 8px 10px 15px rgb(65, 65, 65);
+  box-shadow: 8px 10px 15px rgb(65, 65, 65);
 
 }
 
@@ -119,9 +119,9 @@ button:hover {
   border:none;
   height: 650px;
   overflow-y: auto;
-  -webkit-box-shadow: 8px 10px 10px rgb(65, 65, 65);
-  -moz-box-shadow: 8px 10px 10px rgb(65, 65, 65);
-  box-shadow: 8px 10px 10px rgb(65, 65, 65);
+  -webkit-box-shadow: 8px 10px 15px rgb(65, 65, 65);
+  -moz-box-shadow: 8px 10px 15px rgb(65, 65, 65);
+  box-shadow: 8px 10px 15px rgb(65, 65, 65);
 
 }
 
@@ -135,9 +135,9 @@ button:hover {
   border:none;
   height: 795px;
   overflow-y:auto;
-  -webkit-box-shadow: 8px 10px 10px rgb(65, 65, 65);
-  -moz-box-shadow: 8px 10px 10px rgb(65, 65, 65);
-  box-shadow: 8px 10px 10px rgb(65, 65, 65);
+  -webkit-box-shadow: 8px 10px 15px rgb(65, 65, 65);
+  -moz-box-shadow: 8px 10px 15px rgb(65, 65, 65);
+  box-shadow: 8px 10px 15px rgb(65, 65, 65);
 
 }
 
