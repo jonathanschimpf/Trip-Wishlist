@@ -138,8 +138,20 @@ View a video overview on usage here:
 <p>&nbsp;<p>
 
 
+
 ---
 
+
+<p>&nbsp;<p>
+
+
+[![IMAGE](public/img/trip-wishlist_foodsearch-detail_scrngrb.jpg)](https://trip-wishlist.herokuapp.com/) 
+
+<p>&nbsp;</p>
+
+
+
+---
 
 <p>&nbsp;<p>
 
