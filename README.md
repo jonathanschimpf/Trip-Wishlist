@@ -226,7 +226,7 @@ This project is covered under the MIT license.
 <p>&nbsp;‏‏‎‏‏‎ ‎<strong>+</strong></p>
 
 
-`Passport.js` =>‏‏‎ ‎ ‏‏‎ ‎[A request authentication node package that uses strategies.](hhttps://www.npmjs.com/package/passport)
+`Passport.js` =>‏‏‎ ‎ ‏‏‎ ‎[A request authentication node package that uses strategies.](https://www.npmjs.com/package/passport)
 
 
 <p>&nbsp;‏‏‎‏‏‎ ‎<strong>+</strong></p>
