@@ -281,20 +281,25 @@ This project is covered under the MIT license.
 
 Jen Iglar 
 * [GitHub](https://github.com/jeniglar) 
-* [Email](jeniglar@gmail.com) => <jeniglar@gmail.com>
+* Email => <jeniglar@gmail.com>
+
+<p>&nbsp;‏‏‎‏‏‎</p>
 
 Josh Trevethan
 * [GitHub](https://github.com/JoshTrev) 
-* [Email](joshj438t@gmail.com) => <joshj438t@gmail.com>
+* Email =>  <joshj438t@gmail.com>
 
+<p>&nbsp;‏‏‎‏‏‎</p>
 
 Jonathan Schimpf
 * [GitHub](https://github.com/jonathanschimpf)
-* [Email](jonathan@jonathanschimpf.com) => <jonathan@jonathanschimpf.com>
+* Email => <jonathan@jonathanschimpf.com>
+
+<p>&nbsp;‏‏‎‏‏‎</p>
 
 Carlos Ramirez
 * [GitHub](https://github.com/CarlosR317) 
-* [Email](cramire@ycp.edu) => <cramire@ycp.edu>
+* Email => <cramire@ycp.edu>
 
 
 
